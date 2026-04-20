@@ -17,6 +17,10 @@ def test_get_guitars():
     assert isinstance(data, dict)
     assert "guitars" in data
     
+    # Assert deployment_timestamp is present and is a string
+    assert "deployment_timestamp" in data
+    assert isinstance(data["deployment_timestamp"], str)
+    
     # Assert the value of 'guitars' is a list
     guitars = data["guitars"]
     assert isinstance(guitars, list)

@@ -1,6 +1,10 @@
 from fastapi import FastAPI
+from datetime import datetime
 
 app = FastAPI()
+
+# Global variable to track when the application started
+START_TIME = datetime.now()
 
 @app.get("/guitars")
 def get_guitars():
@@ -14,4 +18,7 @@ def get_guitars():
         {"brand": "Fender", "model": "Telecaster Highway 1", "year": 2005},
         {"brand": "Gibson", "model": "J-45", "year": 2023}
     ]
-    return {"guitars": guitars}
+    return {
+        "guitars": guitars,
+        "deployment_timestamp": START_TIME.isoformat()
+    }
